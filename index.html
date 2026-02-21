@@ -127,15 +127,16 @@
                 });
 
                 const result = await response.json();
-                document.getElementById("statusMsg").innerHTML = "✅ " + result.message;
+                document.getElementById("statusMsg").innerHTML = "done " + result.message;
                 document.getElementById("contactForm").reset();
 
             } catch (error) {
-                document.getElementById("statusMsg").innerHTML = "⚠️ Server not responding.";
+                document.getElementById("statusMsg").innerHTML = " Server not responding.";
             }
         });
     </script>
 
 </body>
 </html>
+
 
