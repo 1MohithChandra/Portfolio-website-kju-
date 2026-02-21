@@ -5,7 +5,7 @@
     <title>Mohith Chandra | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS FILE -->
+    <!-- CSS FILE LINK -->
     <link rel="stylesheet" href="styleportfolio.css">
 </head>
 
@@ -49,7 +49,7 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT -->
     <section id="about" class="section">
         <h2>About Me</h2>
         <p>
@@ -59,7 +59,7 @@
         </p>
     </section>
 
-    <!-- SKILLS SECTION -->
+    <!-- SKILLS -->
     <section id="skills" class="section">
         <h2>Skills</h2>
 
@@ -75,13 +75,13 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
+    <!-- PROJECTS -->
     <section id="projects" class="section">
         <h2>Projects</h2>
 
         <div class="project-card">
             <h3>SAKHĀ AI — Voice Assistant</h3>
-            <p>Built using Python, SpeechRecognition, and pyttsx3.</p>
+            <p>Built using Python, SpeechRecognition and pyttsx3.</p>
         </div>
 
         <div class="project-card">
@@ -90,11 +90,11 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT -->
     <section id="contact" class="section">
         <h2>Contact Me</h2>
 
-        <p>Email: <b>mohithchandra2034@gmail.com</b></p>
+        <p>Email: <b>mohithchandra2094@gmail.com</b></p>
 
         <form id="contactForm" class="contact-form">
             <input type="text" id="name" placeholder="Your Name" required>
@@ -118,11 +118,9 @@
             };
 
             try {
-                const response = await fetch("https://YOUR_BACKEND_URL.onrender.com/api/contact", {
+                const response = await fetch("http://localhost:3000/api/contact", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
                 });
 
