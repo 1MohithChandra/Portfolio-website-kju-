@@ -1,5 +1,5 @@
 require("node:dns/promises").setServers(["1.1.1.1","8.8.8.8"]);
-console.log("✅.env loaded");
+console.log(".env loaded");
 require("dotenv").config();
 
 const express = require("express");
@@ -14,8 +14,8 @@ app.use(express.json());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch(err => console.log("❌ MongoDB Error:", err));
+    .then(() => console.log(" MongoDB Connected"))
+    .catch(err => console.log(" MongoDB Error:", err));
 
 // Simple Contact Schema
 const contactSchema = new mongoose.Schema({
@@ -40,9 +40,9 @@ app.post("/api/contact", async (req, res) => {
     try {
         const newMessage = new Contact(req.body);
         await newMessage.save();
-        res.json({ message: "✅ Message saved to database!" });
+        res.json({ message: " Message saved to database!" });
     } catch (err) {
-        res.status(500).json({ error: "❌ Failed to save message" });
+        res.status(500).json({ error: " Failed to save message" });
     }
 });
 
@@ -50,5 +50,6 @@ app.post("/api/contact", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+    console.log(` Server running at http://localhost:${PORT}`);
 });
+
