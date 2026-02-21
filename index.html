@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mohith Chandra | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="styleportfolio.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Mohith Chandra</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-center">
+
+            <!-- PROFILE IMAGE -->
+            <img src="profile.png" alt="Mohith Chandra" class="profile-img">
+
+            <p class="tagline">Welcome to my portfolio!</p>
+
+            <h1>Hello, my name’s <span>Mohith Chandra.</span></h1>
+
+            <p class="subtitle">
+                A passionate B.Sc AIML student from Kristu Jayanti University,
+                focused on AI, coding, and modern web development.
+            </p>
+
+            <div class="buttons">
+                <button class="btn-primary">Download CV</button>
+                <button class="btn-secondary"
+                    onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">
+                    See My Work
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>
+            I am Mohith Chandra, a B.Sc AIML student at Kristu Jayanti University.
+            I have a strong interest in Artificial Intelligence, Machine Learning,
+            and web development.
+        </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+
+        <div class="skills-grid">
+            <div class="skill-card">C Programming</div>
+            <div class="skill-card">Python</div>
+            <div class="skill-card">SQL</div>
+            <div class="skill-card">MongoDB</div>
+            <div class="skill-card">HTML5</div>
+            <div class="skill-card">CSS3</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">AI & ML</div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+
+        <div class="project-card">
+            <h3>SAKHĀ AI — Voice Assistant</h3>
+            <p>Built using Python, SpeechRecognition and pyttsx3.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Code Swing — Winning Website</h3>
+            <p>1st Place in Inter-University Coding Competition.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+
+        <p>Email: <b>mohithchandra2007@gmail.com</b></p>
+
+        <form id="contactForm" class="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+
+        <p id="statusMsg" style="margin-top:10px; font-weight:bold;"></p>
+    </section>
+
+    <!-- CONTACT SCRIPT -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value
+            };
+
+            try {
+                const response = await fetch("http://localhost:3000/api/contact", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                document.getElementById("statusMsg").innerHTML = "✅ " + result.message;
+                document.getElementById("contactForm").reset();
+
+            } catch (error) {
+                document.getElementById("statusMsg").innerHTML = "⚠️ Server not responding.";
+            }
+        });
+    </script>
+
+</body>
+</html>
+
